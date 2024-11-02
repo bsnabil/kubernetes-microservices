@@ -5,7 +5,7 @@ FROM node:8-alpine
 WORKDIR /usr/src/app
 
 
-COPY package.json ./
+COPY frontend/package.json ./
 RUN npm cache clear --force
 RUN npm install
 COPY . .
