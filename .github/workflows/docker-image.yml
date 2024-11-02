@@ -12,11 +12,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Setup and run tedsts
-      working-directory: ./frontend
-
     
     - name: Checkout
       uses: actions/checkout@v4
