@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Setup and run tests
-        working-directory: ./frontend
+      working-directory: ./frontend
 
     
     - name: Checkout
