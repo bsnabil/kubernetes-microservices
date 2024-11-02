@@ -12,7 +12,8 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    
+
+    steps:
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -32,5 +33,5 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: ./Dockerfile
+        file: ./frontend/Dockerfile
         platforms: linux/amd64,linux/arm64
