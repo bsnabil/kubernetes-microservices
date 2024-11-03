@@ -18,7 +18,7 @@ jobs:
           - todos-api    
           - users-api
           - log-message-processor
-          - log-message-processor
+          - auth-api
 
     steps:
       - name: Checkout code
