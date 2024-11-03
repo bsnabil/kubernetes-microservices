@@ -27,3 +27,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./kubernetes-microservices/${{ matrix.service }}  # Adjust the context path
+          push: true
+          tags: your-dockerhub-username/${{ matrix.service }}:latest
+  
