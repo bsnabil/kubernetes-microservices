@@ -1,30 +1,14 @@
-# Use the official Golang image as the base image
-FROM golang:1.20 as builder
+FROM golang:1.9-alpine
 
-# Set the working directory inside the container
-WORKDIR /app
 
-# Copy go mod and sum files
-COPY Gopkg.toml Gopkg.lock ./
+WORKDIR /go/src/app
+RUN apk --no-cache add curl git && \
+    curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
-# Download the dependencies
-RUN go mod download
-
-# Copy the rest of the application files
 COPY . .
+RUN dep ensure
 
-# Build the Go application
-RUN go build -o myapp main.go
+RUN go build -o auth-api
+EXPOSE 8081
 
-# Use a smaller image for the final build
-FROM alpine:latest
-
-# Set the working directory in the new image
-WORKDIR /root/
-
-# Copy the compiled binary from the builder stage
-COPY --from=builder /app/myapp .
-
-# Command to run the application
-CMD ["./myapp"]
-
+CMD /go/src/app/auth-api
