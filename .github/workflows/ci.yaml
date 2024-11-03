@@ -35,5 +35,5 @@ jobs:
         with:
           context: ${{ matrix.service }}  # Adjust the context path
           push: true
-          tags: your-dockerhub-username/${{ matrix.service }}:latest
+          tags: nabil2222/${{ matrix.service }}:latest
   
