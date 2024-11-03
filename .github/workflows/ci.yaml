@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Change to your main branch
+      - build
   pull_request: 
 
 jobs:
