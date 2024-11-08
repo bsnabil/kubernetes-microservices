@@ -1,14 +1,12 @@
 FROM node:8-alpine
 
-
+EXPOSE 8080
 
 WORKDIR /usr/src/app
 
-COPY . .
-
 COPY package.json ./
-RUN npm cache clear --force
 RUN npm install
 
-EXPOSE 8080
+COPY . .
+
 CMD ["sh", "-c", "npm start" ]
