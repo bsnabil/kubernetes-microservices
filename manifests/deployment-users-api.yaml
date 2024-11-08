@@ -1,21 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: microservice-app-example
   name: users-api
-  namespace: k8s
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: users-api
   template:
     metadata:
       labels:
-        app: users-api
+        app: microservice-app-example
+        service: users-api
+        namespace: k8s
     spec:
       containers:
-      - name: users-api
-        image: nabil2222/todos-api
+      - env:
+        - name: JWT_SECRET
+          value: myfancysecret
+        - name: SERVER_PORT
+          value: "8083"
+        - name: SPRING_ZIPKIN_BASE_URL
+          value: http://zipkin:9411
+        image: users-api
+        name: users-api
         ports:
         - containerPort: 8083
-
+        imagePullPolicy: Never
+      restartPolicy: Always
