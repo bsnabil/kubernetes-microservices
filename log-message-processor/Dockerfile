@@ -1,17 +1,10 @@
-#FROM python:3.6-alpine
-FROM python:3.9-slim
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.6-alpine
 
 WORKDIR /usr/src/app
+RUN apk add --no-cache build-base
 COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN  pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY main.py .
 
 CMD ["python3","-u","main.py"]
-
