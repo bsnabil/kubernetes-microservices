@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: microservice-app-example
+        app: frontend
         service: frontend
     spec:
       containers:
