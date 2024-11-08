@@ -6,7 +6,7 @@ import requests
 from py_zipkin.zipkin import zipkin_span, ZipkinAttrs, generate_random_64bit_string
 import time
 import random
-#export REDIS_HOST='127.0.0.1'
+
 def log_message(message):
     time_delay = random.randrange(0, 2000)
     time.sleep(time_delay / 1000)
