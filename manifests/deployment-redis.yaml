@@ -19,4 +19,5 @@ spec:
         name: redis-queue
         ports:
         - containerPort: 6379
-      restartPolicy: Always      restartPolicy: Always
+      restartPolicy: Always      
+      restartPolicy: Always
