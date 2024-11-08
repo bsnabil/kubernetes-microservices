@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: log-message-processor
-  namespace: projet
+  namespace: k8s
 spec:
   type: NodePort
   selector:
