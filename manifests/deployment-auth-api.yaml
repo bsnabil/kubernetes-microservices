@@ -16,11 +16,11 @@ spec:
       - name: auth-api
         image: nabil2222/auth-api
         ports:
-        - containerPort: 8081  # Ensure this matches the AUTH_API_PORT
+        - containerPort: 8081  
         env:
         - name: AUTH_API_PORT
           value: "8081"
         - name: USERS_API_ADDRESS
           value: "http://users-api:8082"
         - name: JWT_SECRET
-          value: "foo"  # Replace "foo" with the actual secret if different
+          value: "foo"  
