@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: todos-api
-        image: nabil2222/k8sprojet-todos-api
+        image: nabil2222/todos-api
         ports:
         - containerPort: 8082
