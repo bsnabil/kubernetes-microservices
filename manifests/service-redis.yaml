@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: microservice-app-example
-  name: redis-queue
-  namespace: k8s
+  name: redis
 spec:
-  ports:
-  - port: 6379
   selector:
-    service: redis-queue
+    app: redis
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP
