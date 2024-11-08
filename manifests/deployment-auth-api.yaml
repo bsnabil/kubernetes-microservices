@@ -1,30 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: microservice-app-example
   name: auth-api
   namespace: k8s
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: auth-api
   template:
     metadata:
       labels:
-        app: auth-api
+        app: microservice-app-example
+        service: auth-api
     spec:
       containers:
-      - name: auth-api
-        image: nabil2222/auth-api
-        ports:
-        - containerPort: 8081  
-        env:
+      - env:
         - name: AUTH_API_PORT
           value: "8081"
-        - name: USERS_API_ADDRESS
-          value: "http://users-api:8082"
         - name: JWT_SECRET
-          value: "foo"   
-
+          value: myfancysecret
+        - name: USERS_API_ADDRESS
+          value: http://users-api:8083
+        - name: ZIPKIN_URL
+          value: http://zipkin:9411/api/v2/spans          
+        image: auth-api
+        name: auth-api
+        ports:
+        - containerPort: 8081
+        imagePullPolicy: Never
+      restartPolicy: Always
       
 
