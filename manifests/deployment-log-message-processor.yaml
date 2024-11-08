@@ -1,32 +1,34 @@
 apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  labels:
+    app: microservice-app-example
   name: log-message-processor
   namespace: k8s
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: log-message-processor
   template:
     metadata:
       labels:
-        app: log-message-processor
-        
+        app: microservice-app-example
+        service: log-message-processor
     spec:
       containers:
-      - name: log-message-processor
-        image: nabil2222/log-message-processor
-        ports:
-        - containerPort: 5000
-        env:
+      - env:
         - name: REDIS_HOST
-          value: "redis" 
+          value: redis-queue
         - name: REDIS_PORT
-          value: "6379"  
+          value: "6379"
         - name: REDIS_CHANNEL
-          value: "log_messages"   
- 
+          value: log_channel
+        - name: ZIPKIN_URL
+          value: http://zipkin:9411/api/v1/spans
+          
+        image: log-message-processor
+        name: log-message-processor
+        imagePullPolicy: Never
+      restartPolicy: Always 
       
  
 
