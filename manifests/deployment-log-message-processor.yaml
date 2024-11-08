@@ -1,5 +1,4 @@
 apiVersion: apps/v1
-apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
@@ -25,7 +24,7 @@ spec:
         - name: ZIPKIN_URL
           value: http://zipkin:9411/api/v1/spans
           
-        image: log-message-processor
+        image: nabil2222/log-message-processor
         name: log-message-processor
         imagePullPolicy: Never
       restartPolicy: Always 
