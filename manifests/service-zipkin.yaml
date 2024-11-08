@@ -4,7 +4,6 @@ metadata:
   labels:
     app: microservice-app-example
   name: zipkin
-  namespace: k8s
 spec:
   ports:
   - port: 9411
