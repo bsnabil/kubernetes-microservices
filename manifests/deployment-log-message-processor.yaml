@@ -18,4 +18,9 @@ spec:
         image: nabil2222/log-message-processor
         ports:
           - containerPort: 6379
+        envFrom:
+          - configMapRef:
+              name: log-message-processor
+
+
        
