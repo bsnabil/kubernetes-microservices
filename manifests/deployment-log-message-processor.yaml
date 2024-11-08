@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: log-message-processor
-  namespace: k8s
+  namespace: projet
 spec:
   replicas: 1
   selector:
@@ -21,6 +21,3 @@ spec:
         envFrom:
           - configMapRef:
               name: log-message-processor
-
-
-       
