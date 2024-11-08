@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth-api
-        image: nabil2222/k8sprojet-auth-api
+        image: nabil2222/auth-api
         ports:
         - containerPort: 8081  # Ensure this matches the AUTH_API_PORT
         env:
